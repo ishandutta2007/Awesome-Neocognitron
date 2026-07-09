@@ -89,6 +89,17 @@ While the Neocognitron established the conceptual blueprints for deep vision arc
 | **Neuromorphic Hardware & Event-Based Spiking Neural Networks (SNNs)** | *Application:* Powers ultra-low-power edge computing chips. Compiles routing logic directly onto silicon microchips. | 2014 | N/A | [Read More](neuromorphic-hardware.md) |
 | **Optical Character Recognition (OCR) Billing & Document Ingestion** | *Application:* Automates high-volume financial bank check parsing and enterprise document classification using translation-invariant feature extraction. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](optical-character-recognition.md) |
 
+##  Star History
+<div align="center">
+<a href="https://www.star-history.com/?repos=ishandutta2007%2FAwesome-Neocognitron&type=date&legend=bottom-right">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Neocognitron&type=date&theme=dark&legend=bottom-right" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Neocognitron&type=date&legend=bottom-right" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Neocognitron&type=date&legend=bottom-right" />
+</picture>
+</a>
+</div>
+
 ---
 
 ## 📖 References
