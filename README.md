@@ -1,5 +1,9 @@
-# Awesome-Neocognitron
-## The Neocognitron in AI: History, Progression, Architecture, & Legacy
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Neocognitron Banner" width="100%">
+</p>
+
+# 🧠 Awesome-Neocognitron
+## 📚 The Neocognitron in AI: History, Progression, Architecture, & Legacy
 
 The **Neocognitron** is a foundational, biologically inspired hierarchical neural network architecture designed for robust, translation-invariant visual pattern recognition and image classification. Conceptualized by Kunihiko Fukushima in 1979 and formalized in 1980 ("Neocognitron: A Self-organizing Neural Network Model for a Mechanism of Pattern Recognition Unaffected by Shift in Position"), it directly resolved the extreme fragility of early flat neural models. 
 
@@ -7,7 +11,7 @@ Prior to the Neocognitron, networks like Frank Rosenblatt’s Perceptron or Fuku
 
 ---
 
-## 1. The Macro Chronological Evolution
+## 🕰️ 1. The Macro Chronological Evolution
 
 The structural methodology of hierarchical visual feature extraction has transitioned from hand-crafted mammalian models to unsupervised self-organizing networks, backpropagation-driven grids, and modern multi-modal vision transformers.
 
@@ -28,7 +32,7 @@ flowchart LR
 
 ---
 
-## 2. Core Structural Layers & Mathematical Components
+## 🧱 2. Core Structural Layers & Mathematical Components
 
 The Neocognitron architecture is organized into an alternating cascade of specialized mathematical layers designed to systematically isolate and compress visual data.
 
@@ -48,7 +52,7 @@ flowchart TB
 
 ---
 
-## 3. Learning Paradigms: Unsupervised vs. Supervised
+## 🎓 3. Learning Paradigms: Unsupervised vs. Supervised
 
 Fukushima engineered two distinct instructional pipelines to train the internal excitatory weight matrices of the Neocognitron.
 
@@ -59,7 +63,7 @@ Fukushima engineered two distinct instructional pipelines to train the internal 
 
 ---
 
-## 4. Architectural Bottlenecks & Computer Vision Limitations
+## 🚧 4. Architectural Bottlenecks & Computer Vision Limitations
 
 While the Neocognitron established the conceptual blueprints for deep vision architectures, physical hardware and mathematical constraints cap its standalone deployment scaling laws.
 
@@ -70,7 +74,7 @@ While the Neocognitron established the conceptual blueprints for deep vision arc
 
 ---
 
-## 5. Industrial Legacy & Modern Descendants
+## 🏭 5. Industrial Legacy & Modern Descendants
 
 | Legacy | Description | Year First Used | Paper Link | Detailed Info |
 | --- | --- | --- | --- | --- |
@@ -80,7 +84,7 @@ While the Neocognitron established the conceptual blueprints for deep vision arc
 
 ---
 
-## References
+## 📖 References
 1. Hubel, D. H., & Wiesel, T. N. (1962). Receptive fields, binocular interaction and functional architecture in the cat's visual cortex. *The Journal of Physiology*, 160(1), 106-154.
 2. Fukushima, K. (1975). Cognitron: A self-organizing multilayered neural network. *Biological Cybernetics*, 20(3-4), 121-136.
 3. Fukushima, K. (1980). Neocognitron: A self-organizing multilayered neural network model for a mechanism of pattern recognition unaffected by shift in position. *Biological Cybernetics*, 36(4), 193-202.
