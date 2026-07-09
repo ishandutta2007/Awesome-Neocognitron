@@ -13,7 +13,10 @@ The structural methodology of hierarchical visual feature extraction has transit
 
 
 ```mermaid
-[Visual Cortex Hubel/Wiesel, 1959] ───> [Neocognitron (Fukushima, 1980)] ───> [LeNet Convolutional CNN (LeCun, 1989)] ───> [Vision Transformers (ViT, Modern Era)](Biomedical Receptive Field Mapping)       (Interleaved S-Cells and C-Cells)          (Backpropagation-Driven Weight Shared)         (Global Self-Attention Spatial Patches)
+flowchart LR
+    A["Visual Cortex Hubel/Wiesel, 1959<br/>(Biomedical Receptive Field Mapping)"] --> B["Neocognitron (Fukushima, 1980)<br/>(Interleaved S-Cells and C-Cells)"]
+    B --> C["LeNet Convolutional CNN (LeCun, 1989)<br/>(Backpropagation-Driven Weight Shared)"]
+    C --> D["Vision Transformers (ViT, Modern Era)<br/>(Global Self-Attention Spatial Patches)"]
 ```
 
 *   **The Biomedical Cortical Discovery Era (Hubel & Wiesel, ~1959–1962)**
@@ -35,7 +38,10 @@ The Neocognitron architecture is organized into an alternating cascade of specia
 
 
 ```mermaid
-The Neocognitron Layer Cascade[Input Canvas (U₀)] ───> [S-Layer (Feature Extract)] ───> [C-Layer (Spatial Pooling)] ───┐│                                     │                   │ (Repeat Cascade)(S-Cells / Local)                    (C-Cells / Global)          ▼[Final Target Vector] <──────────────────────────────────────────────────────────────────┘
+flowchart TB
+    A["Input Canvas (U₀)"] --> B["S-Layer (Feature Extract)<br/>(S-Cells / Local)"]
+    B --> C["C-Layer (Spatial Pooling)<br/>(C-Cells / Global)"]
+    C -- "(Repeat Cascade)" --> D["Final Target Vector"]
 ```
 
 - ### A. S-Cells (Simple Layers / Local Feature Extraction)
