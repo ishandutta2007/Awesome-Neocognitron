@@ -19,16 +19,12 @@ flowchart LR
     C --> D["Vision Transformers (ViT, Modern Era)<br/>(Global Self-Attention Spatial Patches)"]
 ```
 
-*   **The Biomedical Cortical Discovery Era (Hubel & Wiesel, ~1959–1962)**
-    *   *Concept:* The core biological baseline. Neurophysiologists David Hubel and Torsten Wiesel mapped the primary visual cortex of a cat. They discovered that the mammalian brain decodes shapes using a clear hierarchy of cells: *Simple Cells* (firing exclusively for highly localized, specific edge orientations) and *Complex Cells* (aggregating inputs from multiple simple cells to recognize those orientations even if they shift position spatially).
-*   **The Architectural Synthesis Era (The Neocognitron, Fukushima, 1980)**
-    *   *Concept:* Translated Hubel and Wiesel's biological discovery directly into a computational model. Fukushima constructed a multi-layered neural hierarchy composed of alternating **S-columns (Simple layers)** and **C-columns (Complex layers)**. S-cells functioned as local feature extraction nodes, while C-cells executed spatial pooling to absorb positioning errors.
-    *   *Limitation:* Fragile, hand-tuned learning mechanics. Early Neocognitrons relied entirely on unsupervised competitive learning (a "winner-take-all" reinforcement loop) or manual weight pre-programming, making them exceptionally labor-intensive to train on complex, varied data distributions.
-*   **The End-to-End Backpropagation Era (LeNet / Classical CNNs, 1989–2012)**
-    *   *Concept:* Modernized Fukushima's topology by replacing competitive learning loops with automated mathematical calculus. Yann LeCun et al. fused the Neocognitron's structural hierarchy with **Backpropagation and Stochastic Gradient Descent (SGD)** to create **LeNet-5 (1989)**. They mathematically formalized S-cells as *Convolutional Layers* and C-cells as *Subsampling/Pooling Layers*, sharing parameters cleanly.
-    *   *Significance:* Fully automated feature discovery. Instead of hand-tuning edge extraction rules, the network independently discovered optimal visual filters, leading to the ImageNet boom (AlexNet, 2012) and the modern deep learning revolution.
-*   **The Patchified Global Self-Attention Era (~2020–Present)**
-    *   *Concept:* The current modern state-of-the-art vision foundation standard. It port computer vision out of localized convolutional windows completely. Architectures like **Vision Transformers (ViTs)** slice images into discrete 2D structural token patches. Rather than using spatial pooling loops to achieve translation invariance, they pass patches through global Multi-Head Self-Attention matrices.
+| Era | Description | Year First Used | Paper Link | Detailed Info |
+| --- | --- | --- | --- | --- |
+| **The Biomedical Cortical Discovery Era (Hubel & Wiesel, ~1959–1962)** | *Concept:* The core biological baseline. Neurophysiologists David Hubel and Torsten Wiesel mapped the primary visual cortex of a cat. They discovered that the mammalian brain decodes shapes using a clear hierarchy of cells: *Simple Cells* and *Complex Cells*. | 1959 | [Hubel & Wiesel, 1962](#references) | [Read More](biomedical-cortical-discovery.md) |
+| **The Architectural Synthesis Era (The Neocognitron, Fukushima, 1980)** | *Concept:* Translated Hubel and Wiesel's biological discovery directly into a computational model. Fukushima constructed a multi-layered neural hierarchy. <br> *Limitation:* Fragile, hand-tuned learning mechanics. | 1980 | [Fukushima, 1980](#references) | [Read More](architectural-synthesis.md) |
+| **The End-to-End Backpropagation Era (LeNet / Classical CNNs, 1989–2012)** | *Concept:* Modernized Fukushima's topology by replacing competitive learning loops with automated mathematical calculus. <br> *Significance:* Fully automated feature discovery. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](end-to-end-backpropagation.md) |
+| **The Patchified Global Self-Attention Era (~2020–Present)** | *Concept:* The current modern state-of-the-art vision foundation standard. Architectures like **Vision Transformers (ViTs)** slice images into discrete 2D structural token patches. | 2020 | [Dosovitskiy, A., et al., 2020](#references) | [Read More](patchified-global-self-attention.md) |
 
 ---
 
@@ -44,17 +40,11 @@ flowchart TB
     C -- "(Repeat Cascade)" --> D["Final Target Vector"]
 ```
 
-- ### A. S-Cells (Simple Layers / Local Feature Extraction)
-	*   **Mechanism:** Functions as a localized template matching filter. Ingests a small spatial region (receptive field) from the preceding layer. Its input connections feature both excitatory (trainable variable weights) and inhibitory (fixed regularizing weights) synapses. It calculates a maximum response when an input stimulus perfectly matches its target geometric orientation.
-	*   **Modern Equivalent:** The sliding window kernel function of a standard **Convolutional Layer**.
-
-- ### B. C-Cells (Complex Layers / Spatial Pooling)
-	*   **Mechanism:** Responsible for creating translation invariance. Each individual C-cell connects to a small cluster of S-cells that extract the *identical geometric feature* but across slightly different pixel coordinate offsets. The C-cell fires if *any* of its parent S-cells fire, absorbing minor spatial shifts, tilts, and scaling distortions.
-	*   **Modern Equivalent:** The spatial reduction operations of a **Max-Pooling or Average-Pooling Layer**.
-
-- ### C. Variable vs. Fixed Synaptic Weights
-	*   **Excitatory Synapses ($a$):** Trainable parameters that continuously adapt their values during training to memorize specific local geometric contours.
-	*   **Inhibitory Synapses ($b$):** Fixed, automated parameters that measure the global average intensity of the input window, executing lateral inhibition to suppress noisy activations and sharpen the network's contrast resolution.
+| Component | Description | Year First Used | Paper Link | Detailed Info |
+| --- | --- | --- | --- | --- |
+| **A. S-Cells (Simple Layers / Local Feature Extraction)** | *Mechanism:* Functions as a localized template matching filter. <br> *Modern Equivalent:* The sliding window kernel function of a standard **Convolutional Layer**. | 1980 | [Fukushima, 1980](#references) | [Read More](s-cells-simple-layers.md) |
+| **B. C-Cells (Complex Layers / Spatial Pooling)** | *Mechanism:* Responsible for creating translation invariance. <br> *Modern Equivalent:* The spatial reduction operations of a **Max-Pooling or Average-Pooling Layer**. | 1980 | [Fukushima, 1980](#references) | [Read More](c-cells-complex-layers.md) |
+| **C. Variable vs. Fixed Synaptic Weights** | *Excitatory Synapses:* Trainable parameters. <br> *Inhibitory Synapses:* Fixed, automated parameters for lateral inhibition. | 1980 | [Fukushima, 1980](#references) | [Read More](variable-vs-fixed-synaptic-weights.md) |
 
 ---
 
@@ -62,10 +52,10 @@ flowchart TB
 
 Fukushima engineered two distinct instructional pipelines to train the internal excitatory weight matrices of the Neocognitron.
 
-*   **Self-Organization via Competitive Learning (Unsupervised Track)**
-    *   *Profile:* A data-driven, biological clustering loop. The network processes unannotated digit drawings. For any given input patch, the S-cells within a localized plane compete against each other. The single neuron that outputs the peak response is crowned the "winner," updating its parameter weights exclusively to match the stimulus, while adjacent non-winning cells are masked out. Over epochs, different planes naturally specialize into distinct visual sub-features (e.g., one plane learns vertical strokes, another learns curved loops).
-*   **Coarse-to-Fine Teacher-Guided Training (Supervised Track)**
-    *   *Profile:* Human-in-the-loop parameter scaling. To accelerate training on multi-class alphanumeric datasets, a human designer manually designates exactly *where* and *which* local geometric features each S-plane should extract during early layers (e.g., explicitly commanding Plane 1 to focus on horizontal bars), allowing the terminal layers to learn deep composite characters cleanly without strategic stagnation.
+| Paradigm | Description | Year First Used | Paper Link | Detailed Info |
+| --- | --- | --- | --- | --- |
+| **Self-Organization via Competitive Learning (Unsupervised Track)** | *Profile:* A data-driven, biological clustering loop. The single neuron that outputs the peak response is crowned the "winner," updating its parameter weights exclusively. | 1975 | [Fukushima, 1975](#references) | [Read More](self-organization-competitive-learning.md) |
+| **Coarse-to-Fine Teacher-Guided Training (Supervised Track)** | *Profile:* Human-in-the-loop parameter scaling. A human designer manually designates exactly *where* and *which* local geometric features each S-plane should extract. | 1980 | [Fukushima, 1980](#references) | [Read More](coarse-to-fine-teacher-guided.md) |
 
 ---
 
@@ -73,23 +63,20 @@ Fukushima engineered two distinct instructional pipelines to train the internal 
 
 While the Neocognitron established the conceptual blueprints for deep vision architectures, physical hardware and mathematical constraints cap its standalone deployment scaling laws.
 
-*   **The Hardware Compute Wall & Lack of Backpropagation**
-    *   *The Problem:* The competitive "winner-take-all" unsupervised learning algorithm updates weights locally and independently across layers. Because it lacks a unified, global optimization loss function (like backpropagation) to route directional error gradients down the complete network graph concurrently, scaling the Neocognitron to deep, high-resolution multi-layer portfolios results in training stagnation.
-    *   *Mitigation:* Modern machine learning infrastructures fully replace Fukushima's local reinforcement equations with **Stochastic Gradient Descent and Auto-Differentiable backpropagation graphs**, processing deep layers cleanly inside high-speed GPU Tensor Cores.
-*   **The Memory Footprint Inflation Wall**
-    *   *The Problem:* In the Neocognitron, every single S-plane requires its own dedicated, uncompressed array of connection parameters across the full canvas coordinates, inflating hardware tracking parameters heavily as the target vocabulary or resolution scales.
-    *   *Mitigation:* Implementing **Weight Sharing / Parameter Fusing**, forcing a single convolutional kernel matrix to slide across the entire image space contiguously, caching features inside fast register arrays to minimize global High Bandwidth Memory (HBM) allocations.
+| Limitation | Description | Year First Used | Paper Link | Detailed Info |
+| --- | --- | --- | --- | --- |
+| **The Hardware Compute Wall & Lack of Backpropagation** | *The Problem:* Lacks a unified, global optimization loss function. <br> *Mitigation:* Modern machine learning infrastructures fully replace this with **Stochastic Gradient Descent and Auto-Differentiable backpropagation graphs**. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](hardware-compute-wall.md) |
+| **The Memory Footprint Inflation Wall** | *The Problem:* Every S-plane requires its own dedicated, uncompressed array of connection parameters. <br> *Mitigation:* Implementing **Weight Sharing / Parameter Fusing**. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](memory-footprint-inflation.md) |
 
 ---
 
 ## 5. Industrial Legacy & Modern Descendants
 
-*   **The Foundational Blueprint for Convolutional CNNs (LeNet / ResNet)**
-    *   *Application:* Modern digital computing stacks do not execute raw Neocognitron code; instead, they run its direct architectural descendants. Deep Convolutional Neural Networks (CNNs) inherit Fukushima's exact spatial hierarchical layout, serving as the core perception engines driving autonomous assembly-line quality control, facial recognition authentication, and real-time medical image segmentation loops.
-*   **Neuromorphic Hardware & Event-Based Spiking Neural Networks (SNNs)**
-    *   *Application:* Powers ultra-low-power edge computing chips (such as Intel's Loihi or IBM's TrueNorth). Because the Neocognitron's local lateral inhibition and structural connection parameters match the physical layout of biological neurons, neuromorphic engineers compile its routing logic directly onto silicon microchips, processing high-frequency streaming camera inputs natively with micro-watt energy footprints.
-*   **Optical Character Recognition (OCR) Billing & Document Ingestion**
-    *   *Application:* Automates high-volume financial bank check parsing and enterprise document classification. The structural principles of translation-invariant feature extraction enable deep vision decoders to accurately read and process highly distorted, handwritten, or misaligned alphanumeric strings zero-shot without manual pre-processing steps.
+| Legacy | Description | Year First Used | Paper Link | Detailed Info |
+| --- | --- | --- | --- | --- |
+| **The Foundational Blueprint for Convolutional CNNs (LeNet / ResNet)** | *Application:* Deep Convolutional Neural Networks (CNNs) inherit Fukushima's exact spatial hierarchical layout for tasks like facial recognition. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](foundational-blueprint-cnns.md) |
+| **Neuromorphic Hardware & Event-Based Spiking Neural Networks (SNNs)** | *Application:* Powers ultra-low-power edge computing chips. Compiles routing logic directly onto silicon microchips. | 2014 | N/A | [Read More](neuromorphic-hardware.md) |
+| **Optical Character Recognition (OCR) Billing & Document Ingestion** | *Application:* Automates high-volume financial bank check parsing and enterprise document classification using translation-invariant feature extraction. | 1989 | [LeCun, Y., et al., 1989](#references) | [Read More](optical-character-recognition.md) |
 
 ---
 
